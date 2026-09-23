@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Railway Reservation System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">🚆</div>
+
+            <div>
+                <h2>Railway</h2>
+                <span>Reservation System</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#search">Search Train</a>
+            <a href="#bookings">My Booking</a>
+            <a href="#information">Information</a>
+        </nav>
+
+        <button class="login-btn" onclick="showLogin()">
+            Sign In
+        </button>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="small-title">
+                FAST • SAFE • COMFORTABLE
+            </span>
+
+            <h1>
+                Your Journey<br>
+                Starts Here.
+            </h1>
+
+            <p>
+                Search trains, choose your seat, and book your
+                railway ticket easily in one place.
+            </p>
+
+            <button class="hero-btn" onclick="scrollToSearch()">
+                Book Your Journey
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SEARCH ================= -->
+
+    <section class="search-section" id="search">
+
+        <div class="search-box">
+
+            <div class="search-title">
+                <h2>Search Train</h2>
+
+                <p>
+                    Find the best train for your journey
+                </p>
+            </div>
+
+
+            <form id="searchForm">
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>From</label>
+
+                        <select id="fromStation" required>
+
+                            <option value="">
+                                Select departure
+                            </option>
+
+                            <option>Manila</option>
+                            <option>Quezon City</option>
+                            <option>Pasay</option>
+                            <option>Batangas</option>
+                            <option>Laguna</option>
+                            <option>Bulacan</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="swap-btn"
+                        onclick="swapStations()">
+
+                        ⇄
+
+                    </button>
+
+
+                    <div class="input-group">
+
+                        <label>To</label>
+
+                        <select id="toStation" required>
+
+                            <option value="">
+                                Select destination
+                            </option>
+
+                            <option>Manila</option>
+                            <option>Quezon City</option>
+                            <option>Pasay</option>
+                            <option>Batangas</option>
+                            <option>Laguna</option>
+                            <option>Bulacan</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Travel Date</label>
+
+                        <input
+                            type="date"
+                            id="travelDate"
+                            required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Passengers</label>
+
+                        <select id="passengers">
+
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5 Passengers</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="search-btn">
+
+                    🔎 Search Trains
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SEARCH RESULTS ================= -->
+
+    <section
+        class="results-section"
+        id="results">
+
+        <div class="section-header">
+
+            <div>
+
+                <span>AVAILABLE TRAINS</span>
+
+                <h2>Choose Your Train</h2>
+
+            </div>
+
+        </div>
+
+
+        <div id="trainResults">
+
+            <div class="empty-results">
+
+                <div>🚆</div>
+
+                <h3>Search for a train</h3>
+
+                <p>
+                    Enter your departure, destination,
+                    and travel date above.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BOOKING ================= -->
+
+    <section
+        class="booking-section"
+        id="bookings">
+
+        <div class="booking-container">
+
+            <div class="booking-header">
+
+                <span>PASSENGER DETAILS</span>
+
+                <h2>Complete Your Booking</h2>
+
+            </div>
+
+
+            <div class="booking-layout">
+
+                <!-- Passenger Form -->
+
+                <div class="passenger-card">
+
+                    <form id="bookingForm">
+
+                        <div class="input-group">
+
+                            <label>Full Name</label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                placeholder="Enter your full name"
+                                required>
+
+                        </div>
+
+
+                        <div class="two-columns">
+
+                            <div class="input-group">
+
+                                <label>Email</label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="example@email.com"
+                                    required>
+
+                            </div>
+
+
+                            <div class="input-group">
+
+                                <label>Phone Number</label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    placeholder="09XXXXXXXXX"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Seat</label>
+
+                            <select id="seatSelect" required>
+
+                                <option value="">
+                                    Select a seat
+                                </option>
+
+                                <option>Coach A - Seat 01</option>
+                                <option>Coach A - Seat 02</option>
+                                <option>Coach A - Seat 03</option>
+                                <option>Coach A - Seat 04</option>
+                                <option>Coach B - Seat 01</option>
+                                <option>Coach B - Seat 02</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>Class</label>
+
+                            <select id="classSelect">
+
+                                <option>Standard</option>
+                                <option>First Class</option>
+                                <option>Sleeper</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="confirm-btn">
+
+                            Confirm Booking
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- Summary -->
+
+                <div class="summary-card">
+
+                    <h3>Booking Summary</h3>
+
+                    <div id="summary">
+
+                        <p class="summary-empty">
+                            Select a train first.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= INFORMATION ================= -->
+
+    <section
+        class="information"
+        id="information">
+
+        <div class="info-card">
+
+            <div>
+                <span>TRAVEL INFORMATION</span>
+
+                <h2>Everything you need for your journey.</h2>
+            </div>
+
+            <div class="info-items">
+
+                <div>
+                    <b>🎫 Digital Ticket</b>
+                    <p>
+                        Receive your booking reference
+                        after confirmation.
+                    </p>
+                </div>
+
+                <div>
+                    <b>💺 Seat Selection</b>
+                    <p>
+                        Choose the seat that works
+                        best for your journey.
+                    </p>
+                </div>
+
+                <div>
+                    <b>🚆 Train Information</b>
+                    <p>
+                        View departure, arrival,
+                        duration and fare information.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🚆 Railway Reservation System
+        </div>
+
+        <p>
+            © 2026 Railway Reservation System.
+            All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= LOGIN MODAL ================= -->
+
+    <div
+        class="modal"
+        id="loginModal">
+
+        <div class="modal-box">
+
+            <button
+                class="close-btn"
+                onclick="closeLogin()">
+
+                ×
+
+            </button>
+
+            <h2>Welcome Back</h2>
+
+            <p>
+                Sign in to manage your reservations.
+            </p>
+
+            <input
+                type="email"
+                placeholder="Email">
+
+            <input
+                type="password"
+                placeholder="Password">
+
+            <button class="modal-login">
+                Sign In
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
